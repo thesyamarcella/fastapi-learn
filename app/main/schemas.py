@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 from typing import List, Optional
-
 class RoomBase(BaseModel):
     name: str
     capacity: int
@@ -16,8 +15,8 @@ class Room(RoomBase):
         orm_mode = True
 
 class RoomUpdate(RoomBase):
-    id: int    
-
+    id: int
+    
 class UserBase(BaseModel):
     name: str
     age: int

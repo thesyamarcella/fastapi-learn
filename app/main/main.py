@@ -53,6 +53,10 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
 def read_room(room_id: int, db: Session = Depends(get_db)):
     return crud.get_room(room_id, db)
 
+@app.post("/rooms/", response_model=schemas.Room)
+def create_room(user: schemas.RoomCreate, db: Session = Depends(get_db)):
+    return crud.create_room(user, db)
+
 @app.get("/rooms/", response_model=List[schemas.Room])
 def read_rooms(db: Session = Depends(get_db)):
     rooms = crud.get_all_rooms(db)
