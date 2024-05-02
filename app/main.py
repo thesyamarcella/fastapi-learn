@@ -12,14 +12,13 @@ from .database import engine, SessionLocal
 
 app = FastAPI()
 
-app.include_router(dosen_main.router, prefix="/dosen")
-app.include_router(jadwal_history_main.router, prefix="/histori_jadwal")
-app.include_router(kalender_integrasi_main.router, prefix="/integrasi_kalender")
-app.include_router(kelas_main.router, prefix="/kelas")
-app.include_router(ketersediaan_dosen.router, prefix="/ketersediaan_dosen")
-app.include_router(mata_kuliah_main.router, prefix="/mata_kuliah")
-app.include_router(ruangan_main.router, prefix="/ruangan")
-
+app.include_router(dosen_main.app, prefix="/dosen", tags=["dosen"])
+app.include_router(jadwal_history_main.app, prefix="/histori_jadwal", tags=["histori_jadwal"])
+app.include_router(kalender_integrasi_main.app, prefix="/integrasi_kalender", tags=["integrasi_kalender"])
+app.include_router(kelas_main.app, prefix="/kelas", tags=["kelas"])
+app.include_router(ketersediaan_dosen_main.app, prefix="/ketersediaan_dosen", tags=["ketersediaan_dosen"])
+app.include_router(mata_kuliah_main.app, prefix="/mata_kuliah", tags=["mata_kuliah"])
+app.include_router(ruangan_main.app, prefix="/ruangan", tags=["ruangan"])
 # Dependency to get database session
 def get_db():
     db = SessionLocal()
