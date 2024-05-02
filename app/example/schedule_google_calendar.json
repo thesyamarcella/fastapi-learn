@@ -1,1 +1,146 @@
-[{"summary": "Basis Data - TI-20-KA", "location": "408", "start": {"dateTime": "10:15"}, "end": {"dateTime": "12:00"}, "description": "Dosen: Septian Cahyadi, Kelas: TI-20-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"], "attendees": [{"email": "SeptianCahyadi@ibik.ac.id"}]}, {"summary": "Kecerdasan Buatan - TI-20-KA", "location": "210", "start": {"dateTime": "15:15"}, "end": {"dateTime": "17:00"}, "description": "Dosen: Septian Cahyadi, Kelas: TI-20-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TU"], "attendees": [{"email": "SeptianCahyadi@ibik.ac.id"}]}, {"summary": "Lab Pemrograman Web - TI-20-PA", "location": "210", "start": {"dateTime": "13:15"}, "end": {"dateTime": "15:00"}, "description": "Dosen: Febri Damatraseta, Kelas: TI-20-PA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"], "attendees": [{"email": "FebriDamatraseta@ibik.ac.id"}]}, {"summary": "Matematika Diskrit - TI-21-KA", "location": "210", "start": {"dateTime": "08:15"}, "end": {"dateTime": "10:00"}, "description": "Dosen: Isnan Mulia, Kelas: TI-21-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=MO"], "attendees": [{"email": "IsnanMulia@ibik.ac.id"}]}, {"summary": "Pengantar Teknologi Informasi - TI-21-KA", "location": "408", "start": {"dateTime": "08:15"}, "end": {"dateTime": "10:00"}, "description": "Dosen: Suci Sutjipto, Kelas: TI-21-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TU"], "attendees": [{"email": "SuciSutjipto@ibik.ac.id"}]}, {"summary": "Tata Kelola TI - TI-21-PA", "location": "215", "start": {"dateTime": "08:15"}, "end": {"dateTime": "10:00"}, "description": "Dosen: Edi Nurachmad, Kelas: TI-21-PA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"], "attendees": [{"email": "EdiNurachmad@ibik.ac.id"}]}, {"summary": "Lab Pemrograman Web - TI-22-PA", "location": "215", "start": {"dateTime": "15:15"}, "end": {"dateTime": "17:00"}, "description": "Dosen: Febri Damatraseta, Kelas: TI-22-PA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TU"], "attendees": [{"email": "FebriDamatraseta@ibik.ac.id"}]}, {"summary": "Pengantar Teknologi Informasi - TI-21-KA", "location": "408", "start": {"dateTime": "10:15"}, "end": {"dateTime": "12:00"}, "description": "Dosen: Anton Sukamto, Kelas: TI-21-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=WE"], "attendees": [{"email": "AntonSukamto@ibik.ac.id"}]}, {"summary": "Basis Data - TI-21-KA", "location": "415", "start": {"dateTime": "10:15"}, "end": {"dateTime": "12:00"}, "description": "Dosen: Septian Cahyadi, Kelas: TI-21-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=MO"], "attendees": [{"email": "SeptianCahyadi@ibik.ac.id"}]}, {"summary": "Kecerdasan Buatan - TI-21-KA", "location": "409", "start": {"dateTime": "08:15"}, "end": {"dateTime": "10:00"}, "description": "Dosen: Septian Cahyadi, Kelas: TI-21-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"], "attendees": [{"email": "SeptianCahyadi@ibik.ac.id"}]}, {"summary": "Lab Pemrograman Web - TI-21-PA", "location": "408", "start": {"dateTime": "13:15"}, "end": {"dateTime": "15:00"}, "description": "Dosen: Febri Damatraseta, Kelas: TI-21-PA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=WE"], "attendees": [{"email": "FebriDamatraseta@ibik.ac.id"}]}, {"summary": "Matematika Dasar - TI-20-KA", "location": "415", "start": {"dateTime": "13:15"}, "end": {"dateTime": "15:00"}, "description": "Dosen: Isnan Mulia, Kelas: TI-20-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=WE"], "attendees": [{"email": "IsnanMulia@ibik.ac.id"}]}, {"summary": "Pengantar Teknologi Informasi - TI-20-KA", "location": "210", "start": {"dateTime": "10:15"}, "end": {"dateTime": "12:00"}, "description": "Dosen: Suci Sutjipto, Kelas: TI-20-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=MO"], "attendees": [{"email": "SuciSutjipto@ibik.ac.id"}]}, {"summary": "Tata Kelola TI - TI-20-PA", "location": "409", "start": {"dateTime": "10:15"}, "end": {"dateTime": "12:00"}, "description": "Dosen: Edi Nurachmad, Kelas: TI-20-PA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"], "attendees": [{"email": "EdiNurachmad@ibik.ac.id"}]}, {"summary": "Lab Pemrograman Web - TI-23-PA", "location": "408", "start": {"dateTime": "13:15"}, "end": {"dateTime": "15:00"}, "description": "Dosen: Febri Damatraseta, Kelas: TI-23-PA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TU"], "attendees": [{"email": "FebriDamatraseta@ibik.ac.id"}]}, {"summary": "Manajemen Projek - TI-21-KA", "location": "215", "start": {"dateTime": "13:15"}, "end": {"dateTime": "15:00"}, "description": "Dosen: Anton Sukamto, Kelas: TI-21-KA", "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=WE"], "attendees": [{"email": "AntonSukamto@ibik.ac.id"}]}]
+[
+  {
+    "summary": "Basis Data - TI-20-KA",
+    "location": "408",
+    "start": { "dateTime": "10:15" },
+    "end": { "dateTime": "12:00" },
+    "description": "Dosen: Septian Cahyadi, Kelas: TI-20-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"],
+    "attendees": [{ "email": "SeptianCahyadi@ibik.ac.id" }]
+  },
+  {
+    "summary": "Kecerdasan Buatan - TI-20-KA",
+    "location": "210",
+    "start": { "dateTime": "15:15" },
+    "end": { "dateTime": "17:00" },
+    "description": "Dosen: Septian Cahyadi, Kelas: TI-20-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TU"],
+    "attendees": [{ "email": "SeptianCahyadi@ibik.ac.id" }]
+  },
+  {
+    "summary": "Lab Pemrograman Web - TI-20-PA",
+    "location": "210",
+    "start": { "dateTime": "13:15" },
+    "end": { "dateTime": "15:00" },
+    "description": "Dosen: Febri Damatraseta, Kelas: TI-20-PA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"],
+    "attendees": [{ "email": "FebriDamatraseta@ibik.ac.id" }]
+  },
+  {
+    "summary": "Matematika Diskrit - TI-21-KA",
+    "location": "210",
+    "start": { "dateTime": "08:15" },
+    "end": { "dateTime": "10:00" },
+    "description": "Dosen: Isnan Mulia, Kelas: TI-21-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=MO"],
+    "attendees": [{ "email": "IsnanMulia@ibik.ac.id" }]
+  },
+  {
+    "summary": "Pengantar Teknologi Informasi - TI-21-KA",
+    "location": "408",
+    "start": { "dateTime": "08:15" },
+    "end": { "dateTime": "10:00" },
+    "description": "Dosen: Suci Sutjipto, Kelas: TI-21-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TU"],
+    "attendees": [{ "email": "SuciSutjipto@ibik.ac.id" }]
+  },
+  {
+    "summary": "Tata Kelola TI - TI-21-PA",
+    "location": "215",
+    "start": { "dateTime": "08:15" },
+    "end": { "dateTime": "10:00" },
+    "description": "Dosen: Edi Nurachmad, Kelas: TI-21-PA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"],
+    "attendees": [{ "email": "EdiNurachmad@ibik.ac.id" }]
+  },
+  {
+    "summary": "Lab Pemrograman Web - TI-22-PA",
+    "location": "215",
+    "start": { "dateTime": "15:15" },
+    "end": { "dateTime": "17:00" },
+    "description": "Dosen: Febri Damatraseta, Kelas: TI-22-PA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TU"],
+    "attendees": [{ "email": "FebriDamatraseta@ibik.ac.id" }]
+  },
+  {
+    "summary": "Pengantar Teknologi Informasi - TI-21-KA",
+    "location": "408",
+    "start": { "dateTime": "10:15" },
+    "end": { "dateTime": "12:00" },
+    "description": "Dosen: Anton Sukamto, Kelas: TI-21-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=WE"],
+    "attendees": [{ "email": "AntonSukamto@ibik.ac.id" }]
+  },
+  {
+    "summary": "Basis Data - TI-21-KA",
+    "location": "415",
+    "start": { "dateTime": "10:15" },
+    "end": { "dateTime": "12:00" },
+    "description": "Dosen: Septian Cahyadi, Kelas: TI-21-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=MO"],
+    "attendees": [{ "email": "SeptianCahyadi@ibik.ac.id" }]
+  },
+  {
+    "summary": "Kecerdasan Buatan - TI-21-KA",
+    "location": "409",
+    "start": { "dateTime": "08:15" },
+    "end": { "dateTime": "10:00" },
+    "description": "Dosen: Septian Cahyadi, Kelas: TI-21-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"],
+    "attendees": [{ "email": "SeptianCahyadi@ibik.ac.id" }]
+  },
+  {
+    "summary": "Lab Pemrograman Web - TI-21-PA",
+    "location": "408",
+    "start": { "dateTime": "13:15" },
+    "end": { "dateTime": "15:00" },
+    "description": "Dosen: Febri Damatraseta, Kelas: TI-21-PA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=WE"],
+    "attendees": [{ "email": "FebriDamatraseta@ibik.ac.id" }]
+  },
+  {
+    "summary": "Matematika Dasar - TI-20-KA",
+    "location": "415",
+    "start": { "dateTime": "13:15" },
+    "end": { "dateTime": "15:00" },
+    "description": "Dosen: Isnan Mulia, Kelas: TI-20-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=WE"],
+    "attendees": [{ "email": "IsnanMulia@ibik.ac.id" }]
+  },
+  {
+    "summary": "Pengantar Teknologi Informasi - TI-20-KA",
+    "location": "210",
+    "start": { "dateTime": "10:15" },
+    "end": { "dateTime": "12:00" },
+    "description": "Dosen: Suci Sutjipto, Kelas: TI-20-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=MO"],
+    "attendees": [{ "email": "SuciSutjipto@ibik.ac.id" }]
+  },
+  {
+    "summary": "Tata Kelola TI - TI-20-PA",
+    "location": "409",
+    "start": { "dateTime": "10:15" },
+    "end": { "dateTime": "12:00" },
+    "description": "Dosen: Edi Nurachmad, Kelas: TI-20-PA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TH"],
+    "attendees": [{ "email": "EdiNurachmad@ibik.ac.id" }]
+  },
+  {
+    "summary": "Lab Pemrograman Web - TI-23-PA",
+    "location": "408",
+    "start": { "dateTime": "13:15" },
+    "end": { "dateTime": "15:00" },
+    "description": "Dosen: Febri Damatraseta, Kelas: TI-23-PA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=TU"],
+    "attendees": [{ "email": "FebriDamatraseta@ibik.ac.id" }]
+  },
+  {
+    "summary": "Manajemen Projek - TI-21-KA",
+    "location": "215",
+    "start": { "dateTime": "13:15" },
+    "end": { "dateTime": "15:00" },
+    "description": "Dosen: Anton Sukamto, Kelas: TI-21-KA",
+    "recurrence": ["RRULE:FREQ=WEEKLY;BYDAY=WE"],
+    "attendees": [{ "email": "AntonSukamto@ibik.ac.id" }]
+  }
+]

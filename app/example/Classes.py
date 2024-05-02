@@ -1,9 +1,10 @@
 class Kelas:
     kelas = None
 
-    def __init__(self, name, size):
+    def __init__(self, name, size, shift="pagi"):  # Tambahkan parameter shift default ke "pagi"
         self.name = name
         self.size = size
+        self.shift = shift  # Simpan informasi shift kelas
 
     @staticmethod
     def find(name):
@@ -13,7 +14,8 @@ class Kelas:
         return -1
 
     def __repr__(self):
-        return "Kelas: " + self.name
+        return f"Kelas: {self.name}, Shift: {self.shift}"
+
 
 class Dosen:
     dosen = None

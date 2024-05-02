@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 
 Kelas.kelas = [Kelas("TI-20-PA", 20), Kelas("TI-21-PA", 20), Kelas("TI-22-PA", 20), 
-               Kelas("TI-23-PA", 20), Kelas("TI-20-KA", 20), Kelas('TI-24-PA', 20), Kelas('TI-21-KA', 25)]
+               Kelas("TI-23-PA", 20), Kelas("TI-20-KA", 20, shift="malam"), Kelas('TI-24-PA', 20), Kelas('TI-21-KA', 25, shift="malam")]
 
 Dosen.dosen = [
     Dosen("Septian Cahyadi", preferred_time_slots=["08:15", "10:00", "13:15"]), 
@@ -36,7 +36,11 @@ Schedule.schedules = [Schedule("08:15", "10:00", "Mon"), Schedule("10:15", "12:0
                       Schedule("08:15", "10:00", "wed"), Schedule("10:15", "12:00", "wed"),
                       Schedule("13:15", "15:00", "wed"), Schedule("15:15", "17:00", "wed"),
                       Schedule("08:15", "10:00", "thu"), Schedule("10:15", "12:00", "thu"),
-                      Schedule("13:15", "15:00", "thu"), Schedule("15:15", "17:00", "thu"),]
+                      Schedule("13:15", "15:00", "thu"), Schedule("15:15", "17:00", "thu"),
+                      Schedule("18:00", "20:00", "mon"), Schedule("20:15", "22:00", "mon"),
+                      Schedule("18:00", "20:00", "tue"), Schedule("20:15", "22:00", "tue"),
+                      Schedule("18:00", "20:00", "wed"), Schedule("20:15", "22:00", "wed"),
+                      Schedule("18:00", "20:00", "thu"), Schedule("20:15", "22:00", "thu"),]
 
 
 max_score = None
@@ -226,6 +230,37 @@ def appropriate_timeslot(chromosomes):
             scores += 1
     return scores
 
+MAX_EVENING_SCHEDULE = {
+    "mon": Schedule("18:00", "22:00", "mon"),
+    "tue": Schedule("18:00", "22:00", "tue"),
+    "wed": Schedule("18:00", "22:00", "wed"),
+    "thu": Schedule("18:00", "22:00", "thu"),
+}
+
+# Fungsi untuk menentukan apakah kelas tersebut merupakan kelas malam
+# Fungsi untuk menentukan apakah kelas tersebut merupakan kelas malam
+def is_evening_class(class_index, slot_index):
+    class_shift = Kelas.kelas[class_index].shift
+    schedule_day = Schedule.schedules[slot_index].day
+    max_evening_schedule = MAX_EVENING_SCHEDULE.get(schedule_day)
+    
+    # Periksa apakah max_evening_schedule adalah None
+    if max_evening_schedule is None:
+        return False
+    
+    # Ambil waktu mulai dan waktu akhir dari jadwal kelas
+    class_start_time = Schedule.schedules[slot_index].start
+    class_end_time = Schedule.schedules[slot_index].end
+    
+    # Ambil waktu mulai dan waktu akhir dari batas waktu maksimum untuk kelas malam
+    max_evening_start_time = max_evening_schedule.start
+    max_evening_end_time = max_evening_schedule.end
+    
+    # Bandingkan waktu mulai dan waktu akhir jadwal kelas dengan waktu mulai dan waktu akhir batas waktu malam
+    if class_shift == "malam" and class_start_time >= max_evening_start_time and class_end_time <= max_evening_end_time:
+        return True
+    return False
+
 def evaluate(chromosomes):
     global max_score
     score = 0
@@ -236,6 +271,13 @@ def evaluate(chromosomes):
     score = score + appropriate_room(chromosomes)
     score = score + appropriate_timeslot(chromosomes)
     score += dosen_preferred_time_slots(chromosomes)
+
+    # Tambahkan evaluasi khusus untuk jadwal kelas malam
+    for chromosome in chromosomes:
+        class_index = int(kelas_bits(chromosome), 2)
+        slot_index = int(slot_bits(chromosome), 2)
+        if not is_evening_class(class_index, slot_index):
+            score -= 1  # Penalti untuk jadwal kelas malam di bawah jam 18:00
     return score / max_score
 
 def cost(solution):
@@ -343,20 +385,47 @@ def simulated_annealing():
     print("Score: ", evaluate(population[0]))
     print("Time taken for Simulated Annealing: {:.4f} seconds".format(end_time - start_time))
     
-    # Plot the scores of each iteration
-    plt.plot(range(len(simulated_annealing_scores)), simulated_annealing_scores)
-    plt.title('Simulated Annealing: Fitness Score over Iterations')
-    plt.xlabel('Iteration')
-    plt.ylabel('Fitness Score')
-    plt.show()
-
 population = [] 
+
+def chromosome_to_json(chromosome):
+    schedule_data = []
+    for chrom in chromosome:
+        schedule_data.append({
+            "schedule": str(Schedule.schedules[int(slot_bits(chrom), 2)]),
+            "room": str(Room.rooms[int(lt_bits(chrom), 2)]),
+            "class": str(Kelas.kelas[int(kelas_bits(chrom), 2)]),
+            "course": str(CourseClass.classes[int(course_bits(chrom), 2)]),
+            "lecturer": str(Dosen.dosen[int(dosen_bits(chrom), 2)])
+        })
+    return schedule_data
+
+def print_schedule_per_class(best_solution):
+    class_schedule = {}
+    for chrom in best_solution:
+        class_index = int(kelas_bits(chrom), 2)
+        class_name = Kelas.kelas[class_index].name
+        if class_name not in class_schedule:
+            class_schedule[class_name] = []
+        class_schedule[class_name].append({
+            "schedule": str(Schedule.schedules[int(slot_bits(chrom), 2)]),
+            "room": str(Room.rooms[int(lt_bits(chrom), 2)]),
+            "course": str(CourseClass.classes[int(course_bits(chrom), 2)]),
+            "lecturer": str(Dosen.dosen[int(dosen_bits(chrom), 2)])
+        })
+    
+    # Print schedule per class
+    for class_name, schedules in class_schedule.items():
+        print(f"Class: {class_name}")
+        for schedule in schedules:
+            print(f"{schedule['schedule']} | {schedule['room']} | {schedule['course']} | {schedule['lecturer']}")
+        print()
 
 def genetic_algorithm():
     start_time = time.time() 
     generation = 0
     convert_input_to_bin()
     population = init_population(3)
+    best_solution = None
 
     print("\n---------------- Genetic Algorithm ------------------\n")
     while True:
@@ -364,11 +433,13 @@ def genetic_algorithm():
         # if termination criteria are satisfied, stop.
         if evaluate(max(population, key=evaluate)) == 1 or generation == 500:
             end_time = time.time()  # End time for tracking execution time
+            best_solution = max(population, key=evaluate)
             print("Generations:", generation)
-            print("Best Chromosome fitness value", evaluate(max(population, key=evaluate)))
-            print("Best Chromosome: ", max(population, key=evaluate))
-            for lec in max(population, key=evaluate):
+            print("Best Chromosome fitness value", evaluate(best_solution))
+            print("Best Chromosome: ", best_solution)
+            for lec in best_solution:
                 print_chromosome(lec)
+            print_schedule_per_class(best_solution)
             print("Time taken for Genetic Algorithm: {:.4f} seconds".format(end_time - start_time))
             break
         
@@ -379,134 +450,21 @@ def genetic_algorithm():
                 selection(population, 5)
                 mutate(population[_c])
         generation = generation + 1
-
-def print_schedule_by_class(schedule, class_name):
-    print("Schedule for Class", class_name)
-    print("-----------------------------------------------------")
-    for lec in schedule:
-        if Kelas.kelas[int(kelas_bits(lec), 2)].name == class_name:
-            print_chromosome(lec)
-    print("-----------------------------------------------------")
-
-def convert_schedule_to_json(schedule):
-    schedule_json = []
-    for chromosome in schedule:
-        schedule_json.append({
-            "course": CourseClass.classes[int(course_bits(chromosome), 2)].code,
-            "lecturer": Dosen.dosen[int(dosen_bits(chromosome), 2)].name,
-            "class": Kelas.kelas[int(kelas_bits(chromosome), 2)].name,
-            "room": Room.rooms[int(lt_bits(chromosome), 2)].name,
-            "schedule": {
-                "start": Schedule.schedules[int(slot_bits(chromosome), 2)].start,
-                "end": Schedule.schedules[int(slot_bits(chromosome), 2)].end,
-                "day": Schedule.schedules[int(slot_bits(chromosome), 2)].day,
-                "is_lab_slot": Schedule.schedules[int(slot_bits(chromosome), 2)].is_lab_slot
-            }
-        })
-    return schedule_json
-
-def convert_schedule_to_google_calendar_json(schedule):
-    google_calendar_json = []
-    for chromosome in schedule:
-        course_class = CourseClass.classes[int(course_bits(chromosome), 2)]
-        dosen = Dosen.dosen[int(dosen_bits(chromosome), 2)]
-        kelas = Kelas.kelas[int(kelas_bits(chromosome), 2)]
-        room = Room.rooms[int(lt_bits(chromosome), 2)]
-        schedule_time = Schedule.schedules[int(slot_bits(chromosome), 2)]
         
-        # Membuat nama acara dengan format "Kode_Matakuliah - Kelas"
-        event_name = f"{course_class.code} - {kelas.name}"
-        
-        # Menyiapkan struktur JSON untuk jadwal
-        schedule_json = {
-            "summary": event_name,
-            "location": room.name,
-            "start": {
-                "dateTime": schedule_time.start,
-            },
-            "end": {
-                "dateTime": schedule_time.end,
-            },
-            "description": f"Dosen: {dosen.name}, Kelas: {kelas.name}",
-            "recurrence": [
-                f"RRULE:FREQ=WEEKLY;BYDAY={schedule_time.day[:2].upper()}"  # Menggunakan dua karakter pertama dari day
-            ],
-            "attendees": [
-                {"email": f"{dosen.name.replace(' ', '')}@ibik.ac.id"}  # Email dosen
-            ]
-        }
-        google_calendar_json.append(schedule_json)
-    return google_calendar_json
-
-# def convert_schedule_to_ics(schedule):
-#     cal = Calendar()
-#     for chromosome in schedule:
-#         course_class = CourseClass.classes[int(course_bits(chromosome), 2)]
-#         dosen = Dosen.dosen[int(dosen_bits(chromosome), 2)]
-#         kelas = Kelas.kelas[int(kelas_bits(chromosome), 2)]
-#         room = Room.rooms[int(lt_bits(chromosome), 2)]
-#         schedule_time = Schedule.schedules[int(slot_bits(chromosome), 2)]
-        
-#         event = Event()
-#         event.name = f"{course_class.code} - {kelas.name}"
-#         event.location = room.name
-#         event.description = f"Dosen: {dosen.name}, Kelas: {kelas.name}"
-        
-#         # Parse start and end times
-#         start_time = datetime.strptime(schedule_time.start, "%H:%M")
-#         end_time = datetime.strptime(schedule_time.end, "%H:%M")
-        
-#         # Calculate start and end dates (assuming Monday as the start of the week)
-#         day_mapping = {"MON": 0, "TUE": 1, "WED": 2, "THU": 3, "FRI": 4, "SAT": 5, "SUN": 6}  # Ensure all days are in uppercase
-#         current_day = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-#         target_day = day_mapping[schedule_time.day.upper()]  # Convert day abbreviation to uppercase
-#         while current_day.weekday() != target_day:
-#             current_day += timedelta(days=1)
-        
-#         start_date = current_day + timedelta(hours=start_time.hour, minutes=start_time.minute)
-#         end_date = current_day + timedelta(hours=end_time.hour, minutes=end_time.minute)
-        
-#         event.begin = start_date
-#         event.end = end_date
-        
-#         # Recur weekly
-#         event.extra.append("RRULE:FREQ=WEEKLY")
-        
-#         cal.events.add(event)
-    
-#     return cal
+    # Convert the best solution to JSON
+    if best_solution:
+        json_data = chromosome_to_json(best_solution)
+        # Save JSON data to file
+        with open("schedule_data.json", "w") as json_file:
+            json.dump(json_data, json_file, indent=4)
 
 def main():
     random.seed()
-    genetic_algorithm()
     simulated_annealing()
+    genetic_algorithm()
     
     all_schedules = []
 
-    # Convert schedule to Google Calendar JSON
-    schedule = max(population, key=evaluate)
-    google_calendar_json = convert_schedule_to_google_calendar_json(schedule)
-    ics_schedule = convert_schedule_to_ics(schedule)
-
-    # Save Google Calendar JSON to file
-    with open("schedule_google_calendar.json", "w") as json_file:
-        json.dump(google_calendar_json, json_file)
-
-    # Print schedules for each class and save them to JSON files
-    for class_obj in Kelas.kelas:
-        schedule = max(population, key=evaluate)
-        print_schedule_by_class(schedule, class_obj.name)
-
-        # Convert schedule to JSON
-        schedule_json = convert_schedule_to_json(schedule)
-        all_schedules.extend(schedule_json)
-
-    # Save all schedules to a single JSON file
-    with open("all_schedules.json", "w") as json_file:
-        json.dump(all_schedules, json_file)
-        
-    # Save the entire schedule to a single ICS file
-    # with open("schedule.ics", "w") as ics_file:
-    #     ics_file.write(ics_schedule.serialize())  
 
 main()
+
