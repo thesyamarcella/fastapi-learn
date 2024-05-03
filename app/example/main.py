@@ -79,7 +79,6 @@ def convert_input_to_bin():
            CourseClass.find("Lab Pemrograman Web"), Dosen.find("Febri Damatraseta"), Kelas.find("TI-22-PA"),
            CourseClass.find("Pengantar Teknologi Informasi"), Dosen.find("Anton Sukamto"), Kelas.find("TI-21-KA"),
            CourseClass.find("Basis Data"), Dosen.find("Septian Cahyadi"), Kelas.find("TI-21-KA"),
-           CourseClass.find("Kecerdasan Buatan"), Dosen.find("Septian Cahyadi"), Kelas.find("TI-21-KA"),
            CourseClass.find("Lab Pemrograman Web"), Dosen.find("Febri Damatraseta"), Kelas.find("TI-21-PA"),
            CourseClass.find("Matematika Dasar"), Dosen.find("Isnan Mulia"), Kelas.find("TI-20-KA"),
            CourseClass.find("Pengantar Teknologi Informasi"), Dosen.find("Suci Sutjipto"), Kelas.find("TI-20-KA"),
@@ -424,6 +423,7 @@ def print_schedule_per_class(best_solution):
             print(f"{schedule['schedule']} | {schedule['room']} | {schedule['course']} | {schedule['lecturer']}")
         print()
 
+
 def genetic_algorithm():
     start_time = time.time() 
     generation = 0
@@ -461,6 +461,7 @@ def genetic_algorithm():
         # Save JSON data to file
         with open("schedule_data.json", "w") as json_file:
             json.dump(json_data, json_file, indent=4)
+
 
 def main():
     random.seed()
