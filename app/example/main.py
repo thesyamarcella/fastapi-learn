@@ -14,12 +14,12 @@ Kelas.kelas = [Kelas("TI-20-PA", 20,shift="pagi"), Kelas("TI-21-PA", 20, shift="
                Kelas("TI-23-PA", 20, shift="pagi"), Kelas("TI-20-KA", 20, shift="malam"), Kelas('TI-24-PA', 20, shift="pagi"), Kelas('TI-21-KA', 25, shift="malam")]
 
 Dosen.dosen = [
-    Dosen("Septian Cahyadi", preferred_time_slots=["08:15", "10:00", "13:15"]), 
+    Dosen("Septian Cahyadi", preferred_time_slots=[Schedule("13:15", "15:00", "thu"), Schedule("20:15", "22:00", "wed")]), 
     Dosen("Edi Nurachmad", preferred_time_slots=[Schedule("13:15", "15:00", "Mon"), Schedule("15:15", "17:00", "Mon")]),  
-    Dosen("Anton Sukamto", preferred_time_slots=[Schedule("13:15", "15:00", "Tue"), Schedule("15:15", "17:00", "Tue")]),
+    Dosen("Anton Sukamto", preferred_time_slots=[Schedule("20:15", "22:00", "Tue"), Schedule("15:15", "17:00", "Tue")]),
     Dosen("Febri Damatraseta", preferred_time_slots=[Schedule("13:15", "15:00", "Wed"), Schedule("15:15", "17:00", "Wed")]), 
     Dosen("Suci Sutjipto", preferred_time_slots=[Schedule("13:15", "15:00", "Fri"), Schedule("15:15", "17:00", "Fri")]), 
-    Dosen("Isnan Mulia", preferred_time_slots=[Schedule("13:15", "15:00", "Mon"), Schedule("15:15", "17:00", "Mon")])
+    Dosen("Isnan Mulia", preferred_time_slots=[Schedule("13:15", "15:00", "Mon"), Schedule("20:15", "22:00", "Mon")])
 ]
 
 CourseClass.classes = [CourseClass("Basis Data"),CourseClass("Tata Kelola TI"),CourseClass("Pengantar Teknologi Informasi"),CourseClass("Matematika Diskrit"),
