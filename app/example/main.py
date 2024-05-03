@@ -10,8 +10,8 @@ from ics import Calendar, Event
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 
-Kelas.kelas = [Kelas("TI-20-PA", 20), Kelas("TI-21-PA", 20), Kelas("TI-22-PA", 20), 
-               Kelas("TI-23-PA", 20), Kelas("TI-20-KA", 20, shift="malam"), Kelas('TI-24-PA', 20), Kelas('TI-21-KA', 25, shift="malam")]
+Kelas.kelas = [Kelas("TI-20-PA", 20,shift="pagi"), Kelas("TI-21-PA", 20, shift="pagi"), Kelas("TI-22-PA", 20, shift="pagi"), 
+               Kelas("TI-23-PA", 20, shift="pagi"), Kelas("TI-20-KA", 20, shift="malam"), Kelas('TI-24-PA', 20, shift="pagi"), Kelas('TI-21-KA', 25, shift="malam")]
 
 Dosen.dosen = [
     Dosen("Septian Cahyadi", preferred_time_slots=["08:15", "10:00", "13:15"]), 
@@ -48,7 +48,7 @@ max_score = None
 cpg = []
 lts = []
 slots = []
-bits_needed_backup_store = {}  # to improve performance
+bits_needed_backup_store = {}  
 
 
 def bits_needed(x):
@@ -237,8 +237,6 @@ MAX_EVENING_SCHEDULE = {
     "thu": Schedule("18:00", "22:00", "thu"),
 }
 
-# Fungsi untuk menentukan apakah kelas tersebut merupakan kelas malam
-# Fungsi untuk menentukan apakah kelas tersebut merupakan kelas malam
 def is_evening_class(class_index, slot_index):
     class_shift = Kelas.kelas[class_index].shift
     schedule_day = Schedule.schedules[slot_index].day
@@ -256,10 +254,16 @@ def is_evening_class(class_index, slot_index):
     max_evening_start_time = max_evening_schedule.start
     max_evening_end_time = max_evening_schedule.end
     
-    # Bandingkan waktu mulai dan waktu akhir jadwal kelas dengan waktu mulai dan waktu akhir batas waktu malam
+    # Jika shift adalah malam dan waktu mulai kelas di bawah jam 18:00, maka kelas bukanlah kelas malam
     if class_shift == "malam" and class_start_time >= max_evening_start_time and class_end_time <= max_evening_end_time:
         return True
+    
+    # Jika shift adalah pagi dan waktu mulai kelas di atas jam 18:00, maka kelas bukanlah kelas malam
+    if class_shift == "pagi" and class_start_time < max_evening_start_time:
+        return True
+    
     return False
+
 
 def evaluate(chromosomes):
     global max_score
