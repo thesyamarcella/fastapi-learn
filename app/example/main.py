@@ -69,7 +69,7 @@ def join_cpg_pair(_cpg):
 
 def convert_input_to_bin():
     global cpg, lts, slots, max_score
-
+#course_professor_group
     cpg = [CourseClass.find("Basis Data"), Dosen.find("Septian Cahyadi"), Kelas.find("TI-20-KA"),
            CourseClass.find("Kecerdasan Buatan"), Dosen.find("Septian Cahyadi"), Kelas.find("TI-20-KA"),
            CourseClass.find("Lab Pemrograman Web"), Dosen.find("Febri Damatraseta"), Kelas.find("TI-20-PA"),
